@@ -1,5 +1,8 @@
 package ch.bzz.pokedex.model;
 
+/**
+ * Class for the User.
+ */
 public class User {
 
     private String UUID;
@@ -7,6 +10,10 @@ public class User {
     private String password;
     private String userRole;
 
+    /**
+     * Getters and Setters
+     * @return
+     */
     public String getUUID() {
         return UUID;
     }
@@ -40,6 +47,9 @@ public class User {
     }
 
 
+    /**
+     * Logon and Logoff Methods for the User
+     */
     public void logon() {
 
     }

@@ -1,5 +1,9 @@
 package ch.bzz.pokedex.service;
 
+/**
+ * Service for the Category Class
+ */
+
 import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Category;
 
@@ -11,6 +15,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+/**
+ * Gets the instance of the Category class and builds the whole list
+ */
 @Path("category")
 public class CategoryService {
 
@@ -27,6 +34,11 @@ public class CategoryService {
         return response;
     }
 
+    /**
+     * Reads the category with the given id
+     * @param categoryId
+     * @return
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)

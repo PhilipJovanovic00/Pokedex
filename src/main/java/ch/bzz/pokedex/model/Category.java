@@ -1,15 +1,24 @@
 package ch.bzz.pokedex.model;
 
-import java.util.List;
+/*
+ * Model Class for the Categories a pokemon has
+ */
 
 public class Category {
+
+/*
+ * The id of the Category
+ * the name of the Category
+ */
 
 
     private int categoryId;
     private String categoryName;
 
 
-
+/*
+ * Getter and Setter for the Category
+ */
     public int getCategoryId() {
         return categoryId;
     }

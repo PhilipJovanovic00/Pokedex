@@ -19,7 +19,7 @@ public class TestService {
 
         return Response
                 .status(200)
-                .entity("Test erfolgreich")
+                .entity("Test successful")
                 .build();
     }
 }

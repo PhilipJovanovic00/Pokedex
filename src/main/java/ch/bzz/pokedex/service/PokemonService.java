@@ -1,5 +1,9 @@
 package ch.bzz.pokedex.service;
 
+/**
+ * Service for the Pokemon Class
+ */
+
 import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Pokemon;
 
@@ -11,6 +15,9 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+/**
+ * Gets the instance of the DataHandler and builds the whole list of Pokemon
+ */
 @Path("pokemon")
 public class PokemonService {
 
@@ -27,6 +34,11 @@ public class PokemonService {
         return response;
     }
 
+    /**
+     * Reads the Pokemon with the given id
+     * @param pokemonId
+     * @return
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)

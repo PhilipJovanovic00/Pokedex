@@ -1,5 +1,9 @@
 package ch.bzz.pokedex.service;
 
+/**
+ * Service for the Type Class.
+ */
+
 import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Type;
 
@@ -11,6 +15,10 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 
+
+/**
+ * Gets the instance of the Type and builds it with the whole list of Types.
+ */
 @Path("type")
 public class TypeService {
 
@@ -26,6 +34,11 @@ public class TypeService {
         return response;
     }
 
+    /**
+     * Reads the Type with the given id
+     * @param typeId
+     * @return
+     */
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)

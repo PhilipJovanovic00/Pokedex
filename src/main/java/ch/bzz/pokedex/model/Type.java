@@ -1,13 +1,17 @@
 package ch.bzz.pokedex.model;
 
-import java.util.List;
+/**
+ * Model Class for the Types of a Pokemon
+ */
 
 public class Type {
 
     private int typeId;
     private String typeName;
 
-
+    /**
+     * Getters and Setters
+     */
     public int getTypeId() {
         return typeId;
     }

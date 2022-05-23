@@ -1,5 +1,9 @@
 package ch.bzz.pokedex.data;
 
+/**
+ * This class is used to handle the data.
+ */
+
 import ch.bzz.pokedex.model.Category;
 import ch.bzz.pokedex.model.Pokemon;
 import ch.bzz.pokedex.model.Type;
@@ -47,19 +51,19 @@ public class DataHandler {
 
 
     /**
-     * reads all books
+     * reads all Pokemon
      *
-     * @return list of books
+     * @return list of Pokemon
      */
     public List<Pokemon> readAllPokemon() {
         return getPokemonList();
     }
 
     /**
-     * reads a book by its uuid
+     * reads a Pokemon by its ID
      *
      * @param pokemonId
-     * @return the Book (null=not found)
+     * @return the Pokemon (null=not found)
      */
     public Pokemon readPokemonById(int pokemonId) {
         Pokemon pokemon = null;
@@ -70,11 +74,20 @@ public class DataHandler {
         }
         return pokemon;
     }
-
+    /**
+     * reads all Types
+     *
+     * @return list of Types
+     */
     public List<Type> readAllType() {
         return getTypeList();
     }
-
+    /**
+     * reads a Type by its ID
+     *
+     * @param typeId
+     * @return the Type (null=not found)
+     */
     public Type readTypeById(int typeId) {
         Type type = null;
         for (Type entry : getTypeList()) {
@@ -86,9 +99,9 @@ public class DataHandler {
     }
 
     /**
-     * reads all Publishers
+     * reads all Categories
      *
-     * @return list of publishers
+     * @return list of categories
      */
     public List<Category> readAllCategories() {
 
@@ -96,10 +109,10 @@ public class DataHandler {
     }
 
     /**
-     * reads a publisher by its uuid
+     * reads a category by its ID
      *
      * @param categoryId
-     * @return the Publisher (null=not found)
+     * @return the Category (null=not found)
      */
     public Category readCategoryById(int categoryId) {
         Category category = null;
@@ -112,7 +125,7 @@ public class DataHandler {
     }
 
     /**
-     * reads the books from the JSON-file
+     * reads the Pokemon from the JSON-file
      */
     private void readPokemonJSON() {
         try {
@@ -131,7 +144,7 @@ public class DataHandler {
     }
 
     /**
-     * reads the publishers from the JSON-file
+     * reads the categories from the JSON-file
      */
     private void readCategoryJSON() {
         try {
@@ -148,7 +161,9 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
-
+    /**
+     * reads the types from the JSON-file
+     */
     private void readTypeJSON() {
         try {
             String path = Config.getProperty("typeJSON");
@@ -166,42 +181,50 @@ public class DataHandler {
     }
 
     /**
-     * gets bookList
+     * gets pokemonList
      *
-     * @return value of bookList
+     * @return value of pokemonList
      */
     private List<Pokemon> getPokemonList() {
         return pokemonList;
     }
-
+    /**
+     * gets typeList
+     *
+     * @return value of typeList
+     */
     private List<Type> getTypeList() {
         return typeList;
     }
 
     /**
-     * sets bookList
+     * sets pokemonList
      *
      * @param pokemonList the value to set
      */
     private void setPokemonList(List<Pokemon> pokemonList) {
         this.pokemonList = pokemonList;
     }
-
+    /**
+     * sets typeList
+     *
+     * @param typeList the value to set
+     */
     private void setTypeList(List<Type> typeList) {
         this.typeList = typeList;
     }
 
     /**
-     * gets publisherList
+     * gets categoryList
      *
-     * @return value of publisherList
+     * @return value of categoryList
      */
     private List<Category> getCategoryList() {
         return categoryList;
     }
 
     /**
-     * sets publisherList
+     * sets categoryList
      *
      * @param categoryList the value to set
      */

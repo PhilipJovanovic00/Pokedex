@@ -1,5 +1,8 @@
 package ch.bzz.pokedex.model;
 
+/**
+ * Model Class for a Pokemon
+ */
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +23,9 @@ public class Pokemon {
         this.addType(type);
     }
 
+    /**
+     * Getters and Setters
+     */
     public int getId() {
         return id;
     }
@@ -51,6 +57,10 @@ public class Pokemon {
     public void setTypes(List<Type> types) {
         this.types = types;
     }
+
+    /**
+     *Methods for adding and removing types
+     */
 
     public void addType(Type type) {
         this.types.add(type);
