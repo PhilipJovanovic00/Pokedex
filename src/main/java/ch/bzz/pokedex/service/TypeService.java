@@ -1,6 +1,7 @@
 package ch.bzz.pokedex.service;
 
 import ch.bzz.pokedex.data.DataHandler;
+import ch.bzz.pokedex.model.Pokemon;
 import ch.bzz.pokedex.model.Type;
 
 import javax.ws.rs.GET;
@@ -32,7 +33,20 @@ public class TypeService {
     public Response readType(
             @QueryParam("id") int typeId
     ) {
-        Type type = DataHandler.getInstance().readTypeById(typeId);
+        Type type = null;
+        int httpStatus;
+
+        try{
+            type = DataHandler.getInstance().readTypeById(typeId);
+            if(type == null){
+                httpStatus = 404;
+            }
+            else{
+                httpStatus = 200;
+            }
+        }catch (IllegalArgumentException argEx){
+            httpStatus = 400;
+        }
         Response response = Response
                 .status(200)
                 .entity(type)
