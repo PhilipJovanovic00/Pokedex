@@ -33,9 +33,22 @@ public class PokemonService {
     public Response readPokemon(
             @QueryParam("id") int pokemonId
     ) {
-        Pokemon pokemon = DataHandler.getInstance().readPokemonById(pokemonId);
+        Pokemon pokemon = null;
+        int httpStatus;
+
+        try{
+            pokemon = DataHandler.getInstance().readPokemonById(pokemonId);
+            if(pokemon == null){
+                httpStatus = 404;
+            }
+            else{
+                httpStatus = 200;
+            }
+        }catch (IllegalArgumentException argEx){
+            httpStatus = 400;
+        }
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(pokemon)
                 .build();
         return response;
