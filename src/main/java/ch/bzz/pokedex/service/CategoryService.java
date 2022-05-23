@@ -2,7 +2,6 @@ package ch.bzz.pokedex.service;
 
 import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Category;
-import ch.bzz.pokedex.model.Pokemon;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -19,7 +18,7 @@ public class CategoryService {
     @Path("list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listCategory(){
+    public Response listCategory() {
         List<Category> categoryList = DataHandler.getInstance().readAllCategories();
         Response response = Response
                 .status(200)
@@ -27,6 +26,7 @@ public class CategoryService {
                 .build();
         return response;
     }
+
     @GET
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
@@ -36,15 +36,14 @@ public class CategoryService {
         Category category = null;
         int httpStatus;
 
-        try{
+        try {
             category = DataHandler.getInstance().readCategoryById(categoryId);
-            if(category == null){
+            if (category == null) {
                 httpStatus = 404;
-            }
-            else{
+            } else {
                 httpStatus = 200;
             }
-        }catch (IllegalArgumentException argEx){
+        } catch (IllegalArgumentException argEx) {
             httpStatus = 400;
         }
         Response response = Response

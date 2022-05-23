@@ -18,7 +18,7 @@ public class PokemonService {
     @Path("list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPokemon(){
+    public Response listPokemon() {
         List<Pokemon> pokemonList = DataHandler.getInstance().readAllPokemon();
         Response response = Response
                 .status(200)
@@ -36,15 +36,14 @@ public class PokemonService {
         Pokemon pokemon = null;
         int httpStatus;
 
-        try{
+        try {
             pokemon = DataHandler.getInstance().readPokemonById(pokemonId);
-            if(pokemon == null){
+            if (pokemon == null) {
                 httpStatus = 404;
-            }
-            else{
+            } else {
                 httpStatus = 200;
             }
-        }catch (IllegalArgumentException argEx){
+        } catch (IllegalArgumentException argEx) {
             httpStatus = 400;
         }
         Response response = Response

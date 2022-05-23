@@ -7,11 +7,13 @@ import ch.bzz.pokedex.service.Config;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
 public class DataHandler {
 
     private static DataHandler instance = null;
@@ -34,6 +36,7 @@ public class DataHandler {
 
     /**
      * gets the only instance of this class
+     *
      * @return
      */
     public static DataHandler getInstance() {
@@ -45,6 +48,7 @@ public class DataHandler {
 
     /**
      * reads all books
+     *
      * @return list of books
      */
     public List<Pokemon> readAllPokemon() {
@@ -53,6 +57,7 @@ public class DataHandler {
 
     /**
      * reads a book by its uuid
+     *
      * @param pokemonId
      * @return the Book (null=not found)
      */
@@ -65,9 +70,11 @@ public class DataHandler {
         }
         return pokemon;
     }
+
     public List<Type> readAllType() {
         return getTypeList();
     }
+
     public Type readTypeById(int typeId) {
         Type type = null;
         for (Type entry : getTypeList()) {
@@ -80,6 +87,7 @@ public class DataHandler {
 
     /**
      * reads all Publishers
+     *
      * @return list of publishers
      */
     public List<Category> readAllCategories() {
@@ -89,6 +97,7 @@ public class DataHandler {
 
     /**
      * reads a publisher by its uuid
+     *
      * @param categoryId
      * @return the Publisher (null=not found)
      */
@@ -106,7 +115,7 @@ public class DataHandler {
      * reads the books from the JSON-file
      */
     private void readPokemonJSON() {
-       try {
+        try {
             String path = Config.getProperty("pokemonJSON");
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(path)
@@ -139,7 +148,8 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
-    private void readTypeJSON(){
+
+    private void readTypeJSON() {
         try {
             String path = Config.getProperty("typeJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -154,6 +164,7 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+
     /**
      * gets bookList
      *
@@ -162,6 +173,7 @@ public class DataHandler {
     private List<Pokemon> getPokemonList() {
         return pokemonList;
     }
+
     private List<Type> getTypeList() {
         return typeList;
     }
@@ -174,6 +186,7 @@ public class DataHandler {
     private void setPokemonList(List<Pokemon> pokemonList) {
         this.pokemonList = pokemonList;
     }
+
     private void setTypeList(List<Type> typeList) {
         this.typeList = typeList;
     }

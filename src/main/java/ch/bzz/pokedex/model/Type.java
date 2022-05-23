@@ -8,7 +8,6 @@ public class Type {
     private String typeName;
 
 
-
     public int getTypeId() {
         return typeId;
     }
