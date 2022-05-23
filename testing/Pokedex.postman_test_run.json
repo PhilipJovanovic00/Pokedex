@@ -1,0 +1,355 @@
+{
+	"id": "24b2a0e1-b995-4d58-8eb8-e6397554cf4b",
+	"name": "Pokedex",
+	"timestamp": "2022-05-23T19:33:32.081Z",
+	"collection_id": "20928010-90e4ea24-0f78-49f9-a903-8dc86582b9cc",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 15,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "e18056e1-5599-424d-8765-ba361f7d3382",
+			"name": "TestService",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/test/test",
+			"time": 55,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				55
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "aab6e6f5-17e9-430c-a614-d5c1eadd3fc8",
+			"name": "PokemonList",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/list",
+			"time": 277,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				277
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "5b46cf7c-aa6c-4674-9260-3709d83757f8",
+			"name": "Read Pokemon",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=1",
+			"time": 12,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				12
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "653cd92b-75e9-4dfe-939d-0f1841edc071",
+			"name": "Read unknown Pokemon",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=abc",
+			"time": 51,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				51
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "50a31904-00b8-42fd-9cc8-da856d88485f",
+			"name": "CategoryList",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/list",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "7f74af96-aa55-41f8-ad2b-74af0e1f4042",
+			"name": "Read Category",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?id=1",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "02d9e1bf-f07b-4df8-8303-67a0f190164b",
+			"name": "Read unknown Category",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?id=abc",
+			"time": 14,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				14
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "84379c1c-211c-4552-8141-9a536307d59a",
+			"name": "TypeList",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/list",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "c39c9044-e181-41c4-af82-1bd5fecedfd6",
+			"name": "Read Type",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?id=1",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true,
+				"validate response": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				},
+				"validate response": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true,
+					"validate response": true
+				}
+			]
+		},
+		{
+			"id": "96fe00d5-13f5-4195-a351-9f0c34379ba1",
+			"name": "Read unknown Type",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?id=abc",
+			"time": 9,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 451,
+	"collection": {
+		"requests": [
+			{
+				"id": "e18056e1-5599-424d-8765-ba361f7d3382",
+				"method": "GET"
+			},
+			{
+				"id": "aab6e6f5-17e9-430c-a614-d5c1eadd3fc8",
+				"method": "GET"
+			},
+			{
+				"id": "5b46cf7c-aa6c-4674-9260-3709d83757f8",
+				"method": "GET"
+			},
+			{
+				"id": "653cd92b-75e9-4dfe-939d-0f1841edc071",
+				"method": "GET"
+			},
+			{
+				"id": "50a31904-00b8-42fd-9cc8-da856d88485f",
+				"method": "GET"
+			},
+			{
+				"id": "7f74af96-aa55-41f8-ad2b-74af0e1f4042",
+				"method": "GET"
+			},
+			{
+				"id": "02d9e1bf-f07b-4df8-8303-67a0f190164b",
+				"method": "GET"
+			},
+			{
+				"id": "84379c1c-211c-4552-8141-9a536307d59a",
+				"method": "GET"
+			},
+			{
+				"id": "c39c9044-e181-41c4-af82-1bd5fecedfd6",
+				"method": "GET"
+			},
+			{
+				"id": "96fe00d5-13f5-4195-a351-9f0c34379ba1",
+				"method": "GET"
+			}
+		]
+	}
+}

@@ -1,0 +1,10 @@
+ [
+     {
+         "typeId": 1,
+         "typeName": "grass"
+     },
+     {
+        "typeId": 2,
+        "typeName": "poison"
+     }
+ ]
