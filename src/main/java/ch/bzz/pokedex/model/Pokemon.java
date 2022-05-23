@@ -58,16 +58,16 @@ public class Pokemon {
         return categoryId;
     }*/
 
-    private Integer iD;
+    private int id;
     private String name;
     private int categoryId;
 
-    public Integer getID() {
-        return iD;
+    public int getId() {
+        return id;
     }
 
-    public void setID(Integer iD) {
-        this.iD = iD;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

@@ -54,7 +54,7 @@ public class DataHandler {
     public Pokemon readPokemonById(int pokemonId) {
         Pokemon book = null;
         for (Pokemon entry : getPokemonList()) {
-            if (entry.getID() == pokemonId) {
+            if (entry.getId() == pokemonId) {
                 book = entry;
             }
         }
