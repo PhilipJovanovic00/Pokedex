@@ -4,17 +4,10 @@ import java.util.List;
 
 public class Type {
 
-    private List<Type> type;
     private int typeId;
     private String typeName;
 
-    public List<Type> getType() {
-        return type;
-    }
 
-    public void setType(List<Type> type) {
-        this.type = type;
-    }
 
     public int getTypeId() {
         return typeId;
