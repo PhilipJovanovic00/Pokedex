@@ -2,6 +2,7 @@ package ch.bzz.pokedex.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Pokemon {
@@ -62,6 +63,16 @@ public class Pokemon {
     private String name;
     private int categoryId;
 
+    private List<Type> types;
+
+    public Pokemon() {
+        this.types = new ArrayList<>();
+        Type type = new Type();
+        type.setTypeId(1);
+        type.setTypeName("Grass");
+        this.addType(type);
+    }
+
     public int getId() {
         return id;
     }
@@ -84,5 +95,19 @@ public class Pokemon {
 
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
+    }
+
+    public List<Type> getTypes() {
+        return types;
+    }
+
+    public void setTypes(List<Type> types) {
+        this.types = types;
+    }
+    public void addType(Type type){
+        this.types.add(type);
+    }
+    public void removeType(Type type){
+        this.types.remove(type);
     }
 }

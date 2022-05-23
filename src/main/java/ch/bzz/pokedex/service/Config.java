@@ -29,6 +29,7 @@ public class Config extends Application {
         providers.add(TestService.class);
         providers.add(PokemonService.class);
         providers.add(CategoryService.class);
+        providers.add(TypeService.class);
         return providers;
     }
 

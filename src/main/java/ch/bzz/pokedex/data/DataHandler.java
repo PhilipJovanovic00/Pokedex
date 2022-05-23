@@ -2,6 +2,7 @@ package ch.bzz.pokedex.data;
 
 import ch.bzz.pokedex.model.Category;
 import ch.bzz.pokedex.model.Pokemon;
+import ch.bzz.pokedex.model.Type;
 import ch.bzz.pokedex.service.Config;
 
 
@@ -17,6 +18,8 @@ public class DataHandler {
     private List<Pokemon> pokemonList;
     private List<Category> categoryList;
 
+    private List<Type> typeList;
+
     /**
      * private constructor defeats instantiation
      */
@@ -25,6 +28,8 @@ public class DataHandler {
         readCategoryJSON();
         setPokemonList(new ArrayList<>());
         readPokemonJSON();
+        setTypeList(new ArrayList<>());
+        readTypeJSON();
     }
 
     /**
@@ -52,13 +57,25 @@ public class DataHandler {
      * @return the Book (null=not found)
      */
     public Pokemon readPokemonById(int pokemonId) {
-        Pokemon book = null;
+        Pokemon pokemon = null;
         for (Pokemon entry : getPokemonList()) {
             if (entry.getId() == pokemonId) {
-                book = entry;
+                pokemon = entry;
             }
         }
-        return book;
+        return pokemon;
+    }
+    public List<Type> readAllType() {
+        return getTypeList();
+    }
+    public Type readTypeById(int typeId) {
+        Type type = null;
+        for (Type entry : getTypeList()) {
+            if (entry.getTypeId() == typeId) {
+                type = entry;
+            }
+        }
+        return type;
     }
 
     /**
@@ -122,6 +139,21 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+    private void readTypeJSON(){
+        try {
+            String path = Config.getProperty("typeJSON");
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(path)
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            Type[] types = objectMapper.readValue(jsonData, Type[].class);
+            for (Type type : types) {
+                getTypeList().add(type);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
     /**
      * gets bookList
      *
@@ -129,6 +161,9 @@ public class DataHandler {
      */
     private List<Pokemon> getPokemonList() {
         return pokemonList;
+    }
+    private List<Type> getTypeList() {
+        return typeList;
     }
 
     /**
@@ -138,6 +173,9 @@ public class DataHandler {
      */
     private void setPokemonList(List<Pokemon> pokemonList) {
         this.pokemonList = pokemonList;
+    }
+    private void setTypeList(List<Type> typeList) {
+        this.typeList = typeList;
     }
 
     /**
