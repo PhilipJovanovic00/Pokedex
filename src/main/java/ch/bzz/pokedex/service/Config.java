@@ -9,8 +9,6 @@ import java.util.HashSet;
 import java.util.Properties;
 import java.util.Set;
 
-import static java.lang.System.setProperties;
-
 /**
  * configure the web services and properties
  */
@@ -30,6 +28,7 @@ public class Config extends Application {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
         providers.add(PokemonService.class);
+        providers.add(CategoryService.class);
         return providers;
     }
 

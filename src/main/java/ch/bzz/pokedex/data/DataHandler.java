@@ -54,7 +54,7 @@ public class DataHandler {
     public Pokemon readPokemonById(int pokemonId) {
         Pokemon book = null;
         for (Pokemon entry : getPokemonList()) {
-            if (entry.getPokemonId() == pokemonId) {
+            if (entry.getID() == pokemonId) {
                 book = entry;
             }
         }
@@ -89,7 +89,7 @@ public class DataHandler {
      * reads the books from the JSON-file
      */
     private void readPokemonJSON() {
-        try {
+       try {
             String path = Config.getProperty("pokemonJSON");
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(path)
@@ -109,15 +109,14 @@ public class DataHandler {
      */
     private void readCategoryJSON() {
         try {
+            String path = Config.getProperty("categoryJSON");
             byte[] jsonData = Files.readAllBytes(
-                    Paths.get(
-                            Config.getProperty("publisherJSON")
-                    )
+                    Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Category[] publishers = objectMapper.readValue(jsonData, Category[].class);
-            for (Category publisher : publishers) {
-                getCategoryList().add(publisher);
+            Category[] categories = objectMapper.readValue(jsonData, Category[].class);
+            for (Category category : categories) {
+                getCategoryList().add(category);
             }
         } catch (IOException ex) {
             ex.printStackTrace();

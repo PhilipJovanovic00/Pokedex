@@ -5,10 +5,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 public class Pokemon {
-
+/**
     @JsonIgnore
     private String categoryName;
-    @JsonIgnore
     private int categoryId;
 
     private List<Pokemon> pokemonList;
@@ -30,16 +29,17 @@ public class Pokemon {
 
         }
     }
-*/
-    public int getPokemonId() {
+
+    public int getID() {
         return ID;
     }
-    public void setCategory(Category category){
-        this.categoryId = category.getCategoryId();
-        this.categoryName = category.getCategoryName();
+
+
+    public void setCategoryId(int categoryId){
+        this.categoryId = categoryId;
     }
 
-    public void setPokemonId(int ID) {
+    public void setID(int ID) {
         this.ID = ID;
     }
 
@@ -56,5 +56,33 @@ public class Pokemon {
     }
     public int getCategoryId() {
         return categoryId;
+    }*/
+
+    private Integer iD;
+    private String name;
+    private int categoryId;
+
+    public Integer getID() {
+        return iD;
+    }
+
+    public void setID(Integer iD) {
+        this.iD = iD;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(int categoryId) {
+        this.categoryId = categoryId;
     }
 }
