@@ -10,20 +10,37 @@ public class Type {
     private String typeName;
 
     /**
-     * Getters and Setters
+     * Getter for the TypeId
+     *
+     * @return typeId
      */
     public int getTypeId() {
         return typeId;
     }
 
+    /**
+     * Setter for the TypeId
+     *
+     * @param typeId
+     */
     public void setTypeId(int typeId) {
         this.typeId = typeId;
     }
 
+    /**
+     * Getter for the TypeName
+     *
+     * @return
+     */
     public String getTypeName() {
         return typeName;
     }
 
+    /**
+     * Setter for the TypeName
+     *
+     * @param typeName
+     */
     public void setTypeName(String typeName) {
         this.typeName = typeName;
     }

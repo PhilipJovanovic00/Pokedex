@@ -36,6 +36,7 @@ public class TypeService {
 
     /**
      * Reads the Type with the given id
+     *
      * @param typeId
      * @return
      */
@@ -63,8 +64,6 @@ public class TypeService {
                 .entity(type)
                 .build();
         return response;
-
-
     }
 
 }

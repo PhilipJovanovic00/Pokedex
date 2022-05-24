@@ -1,6 +1,6 @@
 package ch.bzz.pokedex.model;
 
-/**
+/*
  * Model Class for a Pokemon
  */
 
@@ -15,57 +15,98 @@ public class Pokemon {
 
     private List<Type> types;
 
+    //Constructor
     public Pokemon() {
         this.types = new ArrayList<>();
-        Type type = new Type();
-        type.setTypeId(1);
-        type.setTypeName("Grass");
-        this.addType(type);
     }
 
     /**
-     * Getters and Setters
+     * Getter for the id of the pokemon
+     *
+     * @return id
      */
     public int getId() {
         return id;
     }
 
+    /**
+     * setter for the id of the pokemon
+     *
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     * Getter for the name of the pokemon
+     *
+     * @return name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * setter for the name of the pokemon
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Getter for the categoryId of the pokemon
+     *
+     * @return categoryId
+     */
     public int getCategoryId() {
         return categoryId;
     }
 
+    /**
+     * setter for the categoryId of the pokemon
+     *
+     * @param categoryId
+     */
     public void setCategoryId(int categoryId) {
         this.categoryId = categoryId;
     }
 
+    /**
+     * Getter for the types of the pokemon
+     *
+     * @return types
+     */
     public List<Type> getTypes() {
         return types;
     }
 
+    /**
+     * Setter for the types of the pokemon
+     *
+     * @param types
+     */
     public void setTypes(List<Type> types) {
         this.types = types;
     }
 
     /**
-     *Methods for adding and removing types
+     * Method to add a type to the pokemon
+     *
+     * @param type
      */
 
     public void addType(Type type) {
         this.types.add(type);
     }
 
+    /**
+     * Method to remove a type from the pokemon
+     *
+     * @param type
+     */
     public void removeType(Type type) {
         this.types.remove(type);
     }

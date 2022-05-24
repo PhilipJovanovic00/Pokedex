@@ -12,6 +12,7 @@ public class User {
 
     /**
      * Getters and Setters
+     *
      * @return
      */
     public String getUUID() {

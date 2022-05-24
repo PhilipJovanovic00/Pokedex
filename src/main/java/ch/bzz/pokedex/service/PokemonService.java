@@ -36,6 +36,7 @@ public class PokemonService {
 
     /**
      * Reads the Pokemon with the given id
+     *
      * @param pokemonId
      * @return
      */
@@ -63,8 +64,6 @@ public class PokemonService {
                 .entity(pokemon)
                 .build();
         return response;
-
-
     }
 
 }

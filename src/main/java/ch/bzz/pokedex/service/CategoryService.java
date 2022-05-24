@@ -16,7 +16,7 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 
 /**
- * Gets the instance of the Category class and builds the whole list
+ * Gets the instance of the Category class and builds the whole list of categories
  */
 @Path("category")
 public class CategoryService {
@@ -36,6 +36,7 @@ public class CategoryService {
 
     /**
      * Reads the category with the given id
+     *
      * @param categoryId
      * @return
      */

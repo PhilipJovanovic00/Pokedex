@@ -7,7 +7,7 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
 /**
- * test service
+ * test service to check if the service is working
  */
 @Path("test")
 

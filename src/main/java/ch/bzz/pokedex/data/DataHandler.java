@@ -4,14 +4,17 @@ package ch.bzz.pokedex.data;
  * This class is used to handle the data.
  */
 
+//Import of some Classes that are needed
+
 import ch.bzz.pokedex.model.Category;
 import ch.bzz.pokedex.model.Pokemon;
 import ch.bzz.pokedex.model.Type;
 import ch.bzz.pokedex.service.Config;
 
-
+//Import of the Json-Library
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+//Import of other crucial libraries such as arrays, lists, etc.
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -74,6 +77,7 @@ public class DataHandler {
         }
         return pokemon;
     }
+
     /**
      * reads all Types
      *
@@ -82,6 +86,7 @@ public class DataHandler {
     public List<Type> readAllType() {
         return getTypeList();
     }
+
     /**
      * reads a Type by its ID
      *
@@ -161,6 +166,7 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+
     /**
      * reads the types from the JSON-file
      */
@@ -188,6 +194,7 @@ public class DataHandler {
     private List<Pokemon> getPokemonList() {
         return pokemonList;
     }
+
     /**
      * gets typeList
      *
@@ -205,6 +212,7 @@ public class DataHandler {
     private void setPokemonList(List<Pokemon> pokemonList) {
         this.pokemonList = pokemonList;
     }
+
     /**
      * sets typeList
      *
