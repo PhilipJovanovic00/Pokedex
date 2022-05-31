@@ -5,12 +5,10 @@ package ch.bzz.pokedex.service;
  */
 
 import ch.bzz.pokedex.data.DataHandler;
+import ch.bzz.pokedex.model.Pokemon;
 import ch.bzz.pokedex.model.Type;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -26,7 +24,7 @@ public class TypeService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listType() {
-        List<Type> typeList = DataHandler.getInstance().readAllType();
+        List<Type> typeList = DataHandler.readAllType();
         Response response = Response
                 .status(200)
                 .entity(typeList)
@@ -50,7 +48,7 @@ public class TypeService {
         int httpStatus;
 
         try {
-            type = DataHandler.getInstance().readTypeById(typeId);
+            type = DataHandler.readTypeById(typeId);
             if (type == null) {
                 httpStatus = 404;
             } else {
@@ -64,6 +62,69 @@ public class TypeService {
                 .entity(type)
                 .build();
         return response;
+    }
+
+    @POST
+    @Path("create")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createType(
+            @FormParam("name") String name,
+            @FormParam("id") int id
+    ) {
+        Type type = new Type();
+        int httpStatus;
+        try {
+            type.setTypeId(id);
+            type.setTypeName(name);
+            DataHandler.insertType(type);
+            httpStatus = 200;
+        } catch (IllegalArgumentException argEx) {
+            httpStatus = 400;
+        }
+        Response response = Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+        return response;
+    }
+
+    @PUT
+    @Path("update")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updateType(
+            @FormParam("id") int id,
+            @FormParam("name") String name
+    ) {
+        int httpStatus = 200;
+        Type type = DataHandler.readTypeById(id);
+        if(type != null) {
+            type.setTypeId(id);
+            type.setTypeName(name);
+
+            DataHandler.updateType();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteType(
+            @QueryParam("id") int id
+    ) {
+        int httpStatus = 200;
+        if(!DataHandler.deleteType(id)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
     }
 
 }

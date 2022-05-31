@@ -12,10 +12,14 @@ import ch.bzz.pokedex.model.Type;
 import ch.bzz.pokedex.service.Config;
 
 //Import of the Json-Library
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
 //Import of other crucial libraries such as arrays, lists, etc.
-import java.io.IOException;
+import javax.xml.crypto.Data;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -24,10 +28,10 @@ import java.util.List;
 public class DataHandler {
 
     private static DataHandler instance = null;
-    private List<Pokemon> pokemonList;
-    private List<Category> categoryList;
+    private static List<Pokemon> pokemonList;
+    private static List<Category> categoryList;
 
-    private List<Type> typeList;
+    private static List<Type> typeList;
 
     /**
      * private constructor defeats instantiation
@@ -46,10 +50,114 @@ public class DataHandler {
      *
      * @return
      */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
+
+
+    //Delete insert and update methods for Pokemon
+    public static boolean deletePokemon(int pokemonId){
+        Pokemon pokemon = readPokemonById(pokemonId);
+        if(pokemon != null){
+            getPokemonList().remove(pokemon);
+            writePokemonJSON();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public static void insertPokemon(Pokemon pokemon){
+        getPokemonList().add(pokemon);
+        writePokemonJSON();
+    }
+    public static void updatePokemon(){
+        writePokemonJSON();
+    }
+    //Delete insert and update methods for Pokemon end
+
+    //Delete insert and update methods for Category
+    public static boolean deleteCategory(int categoryId){
+        Category category = readCategoryById(categoryId);
+        if(category != null){
+            getCategoryList().remove(category);
+            writeCategoryJSON();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public static void insertCategory(Category category){
+        getCategoryList().add(category);
+        writeCategoryJSON();
+    }
+    public static void updateCategory(){
+        writeCategoryJSON();
+    }
+    //Delete insert and update methods for Category end
+
+    //Delete insert and update methods for Type
+    public static boolean deleteType(int typeId){
+        Type type = readTypeById(typeId);
+        if(type != null){
+            getTypeList().remove(type);
+            writeTypeJSON();
+            return true;
+        } else {
+            return false;
+        }
+
+    }
+    public static void insertType(Type type){
+        getTypeList().add(type);
+        writeTypeJSON();
+    }
+    public static void updateType(){
+        writeTypeJSON();
+    }
+
+    public static void writePokemonJSON(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter = null;
+
+        String pokemonPath = Config.getProperty("pokemonJSON");
+        try {
+            fileOutputStream = new FileOutputStream(pokemonPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getPokemonList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static void writeCategoryJSON(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter = null;
+
+        String categoryPath = Config.getProperty("categoryJSON");
+        try {
+            fileOutputStream = new FileOutputStream(categoryPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getCategoryList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static void writeTypeJSON(){
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter = null;
+
+        String typePath = Config.getProperty("typeJSON");
+        try {
+            fileOutputStream = new FileOutputStream(typePath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getTypeList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
 
@@ -58,7 +166,7 @@ public class DataHandler {
      *
      * @return list of Pokemon
      */
-    public List<Pokemon> readAllPokemon() {
+    public static List<Pokemon> readAllPokemon() {
         return getPokemonList();
     }
 
@@ -68,7 +176,7 @@ public class DataHandler {
      * @param pokemonId
      * @return the Pokemon (null=not found)
      */
-    public Pokemon readPokemonById(int pokemonId) {
+    public static Pokemon readPokemonById(int pokemonId) {
         Pokemon pokemon = null;
         for (Pokemon entry : getPokemonList()) {
             if (entry.getId() == pokemonId) {
@@ -83,7 +191,7 @@ public class DataHandler {
      *
      * @return list of Types
      */
-    public List<Type> readAllType() {
+    public static List<Type> readAllType() {
         return getTypeList();
     }
 
@@ -93,7 +201,7 @@ public class DataHandler {
      * @param typeId
      * @return the Type (null=not found)
      */
-    public Type readTypeById(int typeId) {
+    public static Type readTypeById(int typeId) {
         Type type = null;
         for (Type entry : getTypeList()) {
             if (entry.getTypeId() == typeId) {
@@ -108,7 +216,7 @@ public class DataHandler {
      *
      * @return list of categories
      */
-    public List<Category> readAllCategories() {
+    public static List<Category> readAllCategories() {
 
         return getCategoryList();
     }
@@ -119,7 +227,7 @@ public class DataHandler {
      * @param categoryId
      * @return the Category (null=not found)
      */
-    public Category readCategoryById(int categoryId) {
+    public static Category readCategoryById(int categoryId) {
         Category category = null;
         for (Category entry : getCategoryList()) {
             if (entry.getCategoryId() == categoryId) {
@@ -132,7 +240,7 @@ public class DataHandler {
     /**
      * reads the Pokemon from the JSON-file
      */
-    private void readPokemonJSON() {
+    public static void readPokemonJSON() {
         try {
             String path = Config.getProperty("pokemonJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -151,7 +259,7 @@ public class DataHandler {
     /**
      * reads the categories from the JSON-file
      */
-    private void readCategoryJSON() {
+    public static void readCategoryJSON() {
         try {
             String path = Config.getProperty("categoryJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -170,7 +278,7 @@ public class DataHandler {
     /**
      * reads the types from the JSON-file
      */
-    private void readTypeJSON() {
+    public static void readTypeJSON() {
         try {
             String path = Config.getProperty("typeJSON");
             byte[] jsonData = Files.readAllBytes(
@@ -191,7 +299,11 @@ public class DataHandler {
      *
      * @return value of pokemonList
      */
-    private List<Pokemon> getPokemonList() {
+    private static List<Pokemon> getPokemonList() {
+        if(pokemonList == null) {
+            pokemonList = new ArrayList<>();
+            readPokemonJSON();
+        }
         return pokemonList;
     }
 
@@ -200,7 +312,11 @@ public class DataHandler {
      *
      * @return value of typeList
      */
-    private List<Type> getTypeList() {
+    private static List<Type> getTypeList() {
+        if(typeList == null) {
+            typeList = new ArrayList<>();
+            readTypeJSON();
+        }
         return typeList;
     }
 
@@ -210,7 +326,7 @@ public class DataHandler {
      * @param pokemonList the value to set
      */
     private void setPokemonList(List<Pokemon> pokemonList) {
-        this.pokemonList = pokemonList;
+        DataHandler.pokemonList = pokemonList;
     }
 
     /**
@@ -219,7 +335,7 @@ public class DataHandler {
      * @param typeList the value to set
      */
     private void setTypeList(List<Type> typeList) {
-        this.typeList = typeList;
+        DataHandler.typeList = typeList;
     }
 
     /**
@@ -227,7 +343,11 @@ public class DataHandler {
      *
      * @return value of categoryList
      */
-    private List<Category> getCategoryList() {
+    private static List<Category> getCategoryList() {
+        if(categoryList == null) {
+            categoryList = new ArrayList<>();
+            readCategoryJSON();
+        }
         return categoryList;
     }
 
@@ -237,7 +357,7 @@ public class DataHandler {
      * @param categoryList the value to set
      */
     private void setCategoryList(List<Category> categoryList) {
-        this.categoryList = categoryList;
+        DataHandler.categoryList = categoryList;
     }
 
 

@@ -7,12 +7,10 @@ package ch.bzz.pokedex.service;
 import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Pokemon;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.crypto.Data;
 import java.util.List;
 
 /**
@@ -26,7 +24,7 @@ public class PokemonService {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response listPokemon() {
-        List<Pokemon> pokemonList = DataHandler.getInstance().readAllPokemon();
+        List<Pokemon> pokemonList = DataHandler.readAllPokemon();
         Response response = Response
                 .status(200)
                 .entity(pokemonList)
@@ -50,7 +48,7 @@ public class PokemonService {
         int httpStatus;
 
         try {
-            pokemon = DataHandler.getInstance().readPokemonById(pokemonId);
+            pokemon = DataHandler.readPokemonById(pokemonId);
             if (pokemon == null) {
                 httpStatus = 404;
             } else {
@@ -64,6 +62,69 @@ public class PokemonService {
                 .entity(pokemon)
                 .build();
         return response;
+    }
+    @POST
+    @Path("create")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response createPokemon(
+            @FormParam("name") String name,
+            @FormParam("id") int id
+    ) {
+        Pokemon pokemon = new Pokemon();
+        int httpStatus;
+        try {
+            pokemon.setId(id);
+            pokemon.setName(name);
+            DataHandler.insertPokemon(pokemon);
+            httpStatus = 200;
+        } catch (IllegalArgumentException argEx) {
+            httpStatus = 400;
+        }
+        Response response = Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+        return response;
+    }
+
+
+    @PUT
+    @Path("update")
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response updatePokemon(
+            @FormParam("id") int id,
+            @FormParam("name") String name
+    ) {
+        int httpStatus = 200;
+        Pokemon pokemon = DataHandler.readPokemonById(id);
+        if(pokemon != null) {
+            pokemon.setId(id);
+            pokemon.setName(name);
+
+            DataHandler.updatePokemon();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(200)
+                .entity("")
+                .build();
+    }
+
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deletePokemon(
+            @QueryParam("id") int id
+    ) {
+        int httpStatus = 200;
+        if(!DataHandler.deletePokemon(id)) {
+            httpStatus = 410;
+    }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
     }
 
 }
