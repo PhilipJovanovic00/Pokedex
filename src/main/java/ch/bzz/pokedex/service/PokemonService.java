@@ -93,7 +93,10 @@ public class PokemonService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response updatePokemon(
             @FormParam("id") int id,
-            @FormParam("name") String name
+            @FormParam("categoryId") int categoryId,
+            @FormParam("name") String name,
+            @FormParam("typeId") int typeId,
+            @FormParam("typeName") int typeName
     ) {
         int httpStatus = 200;
         Pokemon pokemon = DataHandler.readPokemonById(id);
