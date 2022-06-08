@@ -13,6 +13,9 @@ public class Pokemon {
     private String name;
     private int categoryId;
 
+    private int typeId;
+    private String typeName;
+
     private List<Type> types;
 
     //Constructor
@@ -109,5 +112,21 @@ public class Pokemon {
      */
     public void removeType(Type type) {
         this.types.remove(type);
+    }
+
+    public int getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(int typeId) {
+        this.typeId = typeId;
+    }
+
+    public String getTypeName() {
+        return typeName;
+    }
+
+    public void setTypeName(String typeName) {
+        this.typeName = typeName;
     }
 }

@@ -65,12 +65,25 @@ public class PokemonService {
     }
     @POST
     @Path("create")
-    @Produces(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
     public Response createPokemon(
+            @FormParam("id") int id,
             @FormParam("name") String name,
-            @FormParam("id") int id
+            @FormParam("categoryId") int categoryId,
+            @FormParam("typeId") int typeId,
+            @FormParam("typeName") String typeName
+
     ) {
         Pokemon pokemon = new Pokemon();
+        setAttributes(
+                pokemon,
+                id,
+                name,
+                categoryId,
+                typeId,
+                typeName
+        );
+
         int httpStatus;
         try {
             pokemon.setId(id);
@@ -129,5 +142,21 @@ public class PokemonService {
                 .entity("")
                 .build();
     }
+
+    private void setAttributes(
+            Pokemon pokemon,
+            int id,
+            String name,
+            int categoryId,
+            int typeId,
+            String typeName
+    ) {
+        pokemon.setId(id);
+        pokemon.setCategoryId(categoryId);
+        pokemon.setName(name);
+        pokemon.setTypeId(typeId);
+        pokemon.setTypeName(typeName);
+    }
+
 
 }
