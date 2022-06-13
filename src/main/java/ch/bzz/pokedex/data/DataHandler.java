@@ -52,6 +52,12 @@ public class DataHandler {
 
 
     //Delete insert and update methods for Pokemon
+
+    /**
+     * Deletes the Pokemon with the given id
+     * @param pokemonId
+     * @return
+     */
     public static boolean deletePokemon(int pokemonId){
         Pokemon pokemon = readPokemonById(pokemonId);
         if(pokemon != null){
@@ -63,16 +69,31 @@ public class DataHandler {
         }
 
     }
+
+    /**
+     * Inserts the given Pokemon into the list
+     * @param pokemon
+     */
     public static void insertPokemon(Pokemon pokemon){
         getPokemonList().add(pokemon);
         writePokemonJSON();
     }
+
+    /**
+     * Updates the given Pokemon in the list
+     */
     public static void updatePokemon(){
         writePokemonJSON();
     }
     //Delete insert and update methods for Pokemon end
 
     //Delete insert and update methods for Category
+
+    /**
+     * Deletes the Category with the given id
+     * @param categoryId
+     * @return
+     */
     public static boolean deleteCategory(int categoryId){
         Category category = readCategoryById(categoryId);
         if(category != null){
@@ -84,16 +105,31 @@ public class DataHandler {
         }
 
     }
+
+    /**
+     * Inserts the given Category into the list
+     * @param category
+     */
     public static void insertCategory(Category category){
         getCategoryList().add(category);
         writeCategoryJSON();
     }
+
+    /**
+     * Updates the given Category in the list
+     */
     public static void updateCategory(){
         writeCategoryJSON();
     }
     //Delete insert and update methods for Category end
 
     //Delete insert and update methods for Type
+
+    /**
+     * Deletes the Type with the given id
+     * @param typeId
+     * @return
+     */
     public static boolean deleteType(int typeId){
         Type type = readTypeById(typeId);
         if(type != null){
@@ -105,14 +141,26 @@ public class DataHandler {
         }
 
     }
+
+    /**
+     * Inserts the given Type into the list
+     * @param type
+     */
     public static void insertType(Type type){
         getTypeList().add(type);
         writeTypeJSON();
     }
+
+    /**
+     * Updates the given Type in the list
+     */
     public static void updateType(){
         writeTypeJSON();
     }
 
+    /**
+     * Writes into the JSON pokemon file
+     */
     public static void writePokemonJSON(){
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -128,6 +176,10 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * Writes into the JSON category file
+     */
     public static void writeCategoryJSON(){
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -143,6 +195,10 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * Writes into the JSON type file
+     */
     public static void writeTypeJSON(){
         ObjectMapper objectMapper = new ObjectMapper();
         ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
@@ -237,7 +293,7 @@ public class DataHandler {
     }
 
     /**
-     * reads the Pokemon from the JSON-file
+     * reads the pokemon JSON file
      */
     public static void readPokemonJSON() {
         try {
