@@ -5,6 +5,7 @@ package ch.bzz.pokedex.model;
  */
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 
@@ -16,6 +17,7 @@ public class Category {
      */
 
 
+    @NotNull
     private int categoryId;
     @FormParam("categoryName")
     @NotEmpty

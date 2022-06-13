@@ -12,6 +12,7 @@ import java.util.List;
 
 public class Pokemon {
 
+    @NotNull
     private int id;
     @FormParam("name")
     @NotEmpty

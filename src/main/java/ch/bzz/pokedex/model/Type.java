@@ -11,6 +11,7 @@ import javax.ws.rs.FormParam;
 
 public class Type {
 
+    @NotNull
     private int typeId;
     @FormParam("typeName")
     @NotEmpty
