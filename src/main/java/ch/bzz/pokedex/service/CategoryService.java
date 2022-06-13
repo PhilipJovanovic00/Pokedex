@@ -8,6 +8,8 @@ import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Category;
 import ch.bzz.pokedex.model.Pokemon;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,6 +44,7 @@ public class CategoryService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readCategory(
+            @NotNull
             @QueryParam("id") int categoryId
     ) {
         Category category = null;
@@ -70,14 +73,10 @@ public class CategoryService {
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
     public Response createCategory(
-            @FormParam("name") String name,
-            @FormParam("id") int id
+            @Valid @BeanParam Category category
     ) {
-        Category category = new Category();
         int httpStatus;
         try {
-            category.setCategoryId(id);
-            category.setCategoryName(name);
             DataHandler.insertCategory(category);
             httpStatus = 200;
         } catch (IllegalArgumentException argEx) {
@@ -94,15 +93,12 @@ public class CategoryService {
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateCategory(
-            @FormParam("id") int id,
-            @FormParam("name") String name
+            @Valid @BeanParam Category category
     ) {
         int httpStatus = 200;
-        Category category = DataHandler.readCategoryById(id);
         if(category != null) {
-            category.setCategoryId(id);
-            category.setCategoryName(name);
-
+            category.setCategoryId(category.getCategoryId());
+            category.setCategoryName(category.getCategoryName());
             DataHandler.updateCategory();
         } else {
             httpStatus = 410;
@@ -117,6 +113,7 @@ public class CategoryService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteCategory(
+            @NotNull
             @QueryParam("id") int id
     ) {
         int httpStatus = 200;

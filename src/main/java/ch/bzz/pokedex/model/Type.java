@@ -1,5 +1,10 @@
 package ch.bzz.pokedex.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 /**
  * Model Class for the Types of a Pokemon
  */
@@ -7,6 +12,9 @@ package ch.bzz.pokedex.model;
 public class Type {
 
     private int typeId;
+    @FormParam("typeName")
+    @NotEmpty
+    @Size(min = 1, max = 15)
     private String typeName;
 
     /**

@@ -3,19 +3,30 @@ package ch.bzz.pokedex.model;
 /*
  * Model Class for a Pokemon
  */
-
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Pokemon {
 
     private int id;
+    @FormParam("name")
+    @NotEmpty
+    @Size(min = 3, max = 11)
     private String name;
+    @FormParam("categoryId")
+    @NotNull
     private int categoryId;
-
+    @FormParam("typeId")
+    @NotNull
     private int typeId;
+    @FormParam("typeName")
+    @NotEmpty
+    @Size(min = 1, max = 15)
     private String typeName;
-
     private List<Type> types;
 
     //Constructor
@@ -31,12 +42,6 @@ public class Pokemon {
     public int getId() {
         return id;
     }
-
-    /**
-     * setter for the id of the pokemon
-     *
-     * @param id
-     */
     public void setId(int id) {
         this.id = id;
     }

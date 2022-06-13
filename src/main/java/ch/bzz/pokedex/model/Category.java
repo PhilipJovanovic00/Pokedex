@@ -4,6 +4,10 @@ package ch.bzz.pokedex.model;
  * Model Class for the Categories a pokemon has
  */
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 public class Category {
 
     /*
@@ -13,6 +17,9 @@ public class Category {
 
 
     private int categoryId;
+    @FormParam("categoryName")
+    @NotEmpty
+    @Size(min = 3, max = 11)
     private String categoryName;
 
 

@@ -7,10 +7,14 @@ package ch.bzz.pokedex.service;
 import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Pokemon;
 
+import javax.validation.Valid;
+import javax.validation.constraints.*;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.crypto.Data;
+import java.text.NumberFormat;
 import java.util.List;
 
 /**
@@ -42,8 +46,9 @@ public class PokemonService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readPokemon(
+            @NotNull
             @QueryParam("id") int pokemonId
-    ) {
+     ){
         Pokemon pokemon = null;
         int httpStatus;
 
@@ -67,27 +72,10 @@ public class PokemonService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createPokemon(
-            @FormParam("id") int id,
-            @FormParam("name") String name,
-            @FormParam("categoryId") int categoryId,
-            @FormParam("typeId") int typeId,
-            @FormParam("typeName") String typeName
-
+            @Valid @BeanParam Pokemon pokemon
     ) {
-        Pokemon pokemon = new Pokemon();
-        setAttributes(
-                pokemon,
-                id,
-                name,
-                categoryId,
-                typeId,
-                typeName
-        );
-
         int httpStatus;
         try {
-            pokemon.setId(id);
-            pokemon.setName(name);
             DataHandler.insertPokemon(pokemon);
             httpStatus = 200;
         } catch (IllegalArgumentException argEx) {
@@ -105,18 +93,12 @@ public class PokemonService {
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updatePokemon(
-            @FormParam("id") int id,
-            @FormParam("categoryId") int categoryId,
-            @FormParam("name") String name,
-            @FormParam("typeId") int typeId,
-            @FormParam("typeName") int typeName
+            @Valid @BeanParam Pokemon pokemon
     ) {
         int httpStatus = 200;
-        Pokemon pokemon = DataHandler.readPokemonById(id);
         if(pokemon != null) {
-            pokemon.setId(id);
-            pokemon.setName(name);
-
+            pokemon.setId(pokemon.getId());
+            pokemon.setName(pokemon.getName());
             DataHandler.updatePokemon();
         } else {
             httpStatus = 410;
@@ -131,10 +113,11 @@ public class PokemonService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deletePokemon(
-            @QueryParam("id") int id
+            @NotNull
+            @QueryParam("id") int pokemonId
     ) {
         int httpStatus = 200;
-        if(!DataHandler.deletePokemon(id)) {
+        if(!DataHandler.deletePokemon(pokemonId)) {
             httpStatus = 410;
     }
         return Response
@@ -142,21 +125,4 @@ public class PokemonService {
                 .entity("")
                 .build();
     }
-
-    private void setAttributes(
-            Pokemon pokemon,
-            int id,
-            String name,
-            int categoryId,
-            int typeId,
-            String typeName
-    ) {
-        pokemon.setId(id);
-        pokemon.setCategoryId(categoryId);
-        pokemon.setName(name);
-        pokemon.setTypeId(typeId);
-        pokemon.setTypeName(typeName);
-    }
-
-
 }

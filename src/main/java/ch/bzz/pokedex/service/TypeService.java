@@ -8,6 +8,9 @@ import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Pokemon;
 import ch.bzz.pokedex.model.Type;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -42,6 +45,7 @@ public class TypeService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readType(
+            @NotNull
             @QueryParam("id") int typeId
     ) {
         Type type = null;
@@ -68,14 +72,10 @@ public class TypeService {
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
     public Response createType(
-            @FormParam("name") String name,
-            @FormParam("id") int id
+            @Valid @BeanParam Type type
     ) {
-        Type type = new Type();
         int httpStatus;
         try {
-            type.setTypeId(id);
-            type.setTypeName(name);
             DataHandler.insertType(type);
             httpStatus = 200;
         } catch (IllegalArgumentException argEx) {
@@ -92,15 +92,12 @@ public class TypeService {
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateType(
-            @FormParam("id") int id,
-            @FormParam("name") String name
+            @Valid @BeanParam Type type
     ) {
         int httpStatus = 200;
-        Type type = DataHandler.readTypeById(id);
         if(type != null) {
-            type.setTypeId(id);
-            type.setTypeName(name);
-
+            type.setTypeId(type.getTypeId());
+            type.setTypeName(type.getTypeName());
             DataHandler.updateType();
         } else {
             httpStatus = 410;
@@ -115,6 +112,7 @@ public class TypeService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteType(
+            @NotNull
             @QueryParam("id") int id
     ) {
         int httpStatus = 200;
