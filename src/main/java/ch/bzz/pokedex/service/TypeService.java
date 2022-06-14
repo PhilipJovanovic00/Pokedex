@@ -46,7 +46,7 @@ public class TypeService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readType(
             @NotNull
-            @QueryParam("id") int typeId
+            @QueryParam("typeId") int typeId
     ) {
         Type type = null;
         int httpStatus;
@@ -62,7 +62,7 @@ public class TypeService {
             httpStatus = 400;
         }
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(type)
                 .build();
         return response;
@@ -113,7 +113,7 @@ public class TypeService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteType(
             @NotNull
-            @QueryParam("id") int id
+            @QueryParam("typeId") int id
     ) {
         int httpStatus = 200;
         if(!DataHandler.deleteType(id)) {

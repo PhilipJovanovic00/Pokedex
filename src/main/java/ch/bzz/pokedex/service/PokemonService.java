@@ -104,7 +104,7 @@ public class PokemonService {
             httpStatus = 410;
         }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }

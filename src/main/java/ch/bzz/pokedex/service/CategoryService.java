@@ -45,7 +45,7 @@ public class CategoryService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readCategory(
             @NotNull
-            @QueryParam("id") int categoryId
+            @QueryParam("categoryId") int categoryId
     ) {
         Category category = null;
         int httpStatus;
@@ -61,7 +61,7 @@ public class CategoryService {
             httpStatus = 400;
         }
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(category)
                 .build();
         return response;
@@ -114,7 +114,7 @@ public class CategoryService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteCategory(
             @NotNull
-            @QueryParam("id") int id
+            @QueryParam("categoryId") int id
     ) {
         int httpStatus = 200;
         if(!DataHandler.deleteCategory(id)) {
