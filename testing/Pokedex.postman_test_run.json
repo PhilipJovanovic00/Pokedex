@@ -1,102 +1,72 @@
 {
-	"id": "24b2a0e1-b995-4d58-8eb8-e6397554cf4b",
+	"id": "cdecbacd-cf03-4868-96a1-3d471ecc985d",
 	"name": "Pokedex",
-	"timestamp": "2022-05-23T19:33:32.081Z",
+	"timestamp": "2022-06-14T19:12:55.605Z",
 	"collection_id": "20928010-90e4ea24-0f78-49f9-a903-8dc86582b9cc",
 	"folder_id": 0,
 	"environment_id": "0",
-	"totalPass": 15,
+	"totalPass": 42,
 	"totalFail": 0,
 	"results": [
 		{
-			"id": "e18056e1-5599-424d-8765-ba361f7d3382",
-			"name": "TestService",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/test/test",
-			"time": 55,
+			"id": "2c58fb18-d2b3-403d-af94-0163bfc12aac",
+			"name": "Read Pokemon Null",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=",
+			"time": 280,
 			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {},
-			"testPassFailCounts": {},
-			"times": [
-				55
-			],
-			"allTests": [
-				{}
-			]
-		},
-		{
-			"id": "aab6e6f5-17e9-430c-a614-d5c1eadd3fc8",
-			"name": "PokemonList",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/list",
-			"time": 277,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
+				"code": 404,
+				"name": "Not Found"
 			},
 			"tests": {
-				"Status test": true,
-				"validate response": true
+				"Status test": true
 			},
 			"testPassFailCounts": {
 				"Status test": {
 					"pass": 1,
 					"fail": 0
-				},
-				"validate response": {
-					"pass": 1,
-					"fail": 0
 				}
 			},
 			"times": [
-				277
+				280
 			],
 			"allTests": [
 				{
-					"Status test": true,
-					"validate response": true
+					"Status test": true
 				}
 			]
 		},
 		{
-			"id": "5b46cf7c-aa6c-4674-9260-3709d83757f8",
-			"name": "Read Pokemon",
+			"id": "8b8497cf-c200-4d7c-81e7-62cf10ae1f32",
+			"name": "Read Pokemon Correct",
 			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=1",
-			"time": 12,
+			"time": 119,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status test": true,
-				"validate response": true
+				"Status test": true
 			},
 			"testPassFailCounts": {
 				"Status test": {
 					"pass": 1,
 					"fail": 0
-				},
-				"validate response": {
-					"pass": 1,
-					"fail": 0
 				}
 			},
 			"times": [
-				12
+				119
 			],
 			"allTests": [
 				{
-					"Status test": true,
-					"validate response": true
+					"Status test": true
 				}
 			]
 		},
 		{
-			"id": "653cd92b-75e9-4dfe-939d-0f1841edc071",
-			"name": "Read unknown Pokemon",
+			"id": "b9fe9e02-f0c4-467d-bf1e-fca36d6bb21d",
+			"name": "Read Pokemon False",
 			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=abc",
-			"time": 51,
+			"time": 49,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -111,7 +81,7 @@
 				}
 			},
 			"times": [
-				51
+				49
 			],
 			"allTests": [
 				{
@@ -120,76 +90,10 @@
 			]
 		},
 		{
-			"id": "50a31904-00b8-42fd-9cc8-da856d88485f",
-			"name": "CategoryList",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/list",
-			"time": 9,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"validate response": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"validate response": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				9
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"validate response": true
-				}
-			]
-		},
-		{
-			"id": "7f74af96-aa55-41f8-ad2b-74af0e1f4042",
-			"name": "Read Category",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?id=1",
-			"time": 9,
-			"responseCode": {
-				"code": 200,
-				"name": "OK"
-			},
-			"tests": {
-				"Status test": true,
-				"validate response": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"validate response": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				9
-			],
-			"allTests": [
-				{
-					"Status test": true,
-					"validate response": true
-				}
-			]
-		},
-		{
-			"id": "02d9e1bf-f07b-4df8-8303-67a0f190164b",
-			"name": "Read unknown Category",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?id=abc",
-			"time": 14,
+			"id": "f722cb8c-8079-48bb-88ce-05d24073c5a6",
+			"name": "Read Category Null",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?categoryId=",
+			"time": 10,
 			"responseCode": {
 				"code": 404,
 				"name": "Not Found"
@@ -204,7 +108,7 @@
 				}
 			},
 			"times": [
-				14
+				10
 			],
 			"allTests": [
 				{
@@ -213,24 +117,19 @@
 			]
 		},
 		{
-			"id": "84379c1c-211c-4552-8141-9a536307d59a",
-			"name": "TypeList",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/list",
+			"id": "72999e73-29e3-4240-84dc-eabf67b40ed3",
+			"name": "Read Category Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?categoryId=1",
 			"time": 7,
 			"responseCode": {
 				"code": 200,
 				"name": "OK"
 			},
 			"tests": {
-				"Status test": true,
-				"validate response": true
+				"Status test": true
 			},
 			"testPassFailCounts": {
 				"Status test": {
-					"pass": 1,
-					"fail": 0
-				},
-				"validate response": {
 					"pass": 1,
 					"fail": 0
 				}
@@ -240,15 +139,977 @@
 			],
 			"allTests": [
 				{
-					"Status test": true,
-					"validate response": true
+					"Status test": true
 				}
 			]
 		},
 		{
-			"id": "c39c9044-e181-41c4-af82-1bd5fecedfd6",
-			"name": "Read Type",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?id=1",
+			"id": "3f03c545-9f55-4872-8c1b-053336d2db26",
+			"name": "Read Category False",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?categoryId=abc",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "9e85df9a-982a-4b48-8ff7-dbf95e790f7d",
+			"name": "Read Type Null",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?typeId=",
+			"time": 13,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "39df0641-21d2-427a-bda8-56c2b22c0478",
+			"name": "Read Type Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?typeId=1",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "ceedfd9b-e244-4d73-92c6-7347f35cbd21",
+			"name": "Read Type False",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?typeId=abc",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "80b0a30d-2b8b-4006-b785-f3dc0b49def5",
+			"name": "Delete Pokemon Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=4",
+			"time": 30,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				30
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "ff53cf51-5ad4-48cb-955a-a5c3e00a1504",
+			"name": "Delete Pokemon False",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=abc",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "da50e4e8-2194-4596-a5e5-838798e53f5a",
+			"name": "Delete Pokemon Null",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=",
+			"time": 5,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "97bd2af8-2748-4598-9ec1-fd3cb036b60e",
+			"name": "Delete Category Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/delete?categoryId=1",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "56c7ec3d-a08f-4b7a-9f68-55bc853d95a6",
+			"name": "Delete Category False",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/delete?categoryId=abc",
+			"time": 6,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "49ac09b4-429f-4cf5-b649-73540f37d1ad",
+			"name": "Delete Category Null",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/delete?categoryId=",
+			"time": 6,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "bbd2897d-30e5-4dfc-964d-105b390d0012",
+			"name": "Delete Type Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?typeId=5",
+			"time": 7,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				7
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "21ff603b-e761-4cf9-a31b-7b5de5da61d9",
+			"name": "Delete Type False",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?typeId=abc",
+			"time": 5,
+			"responseCode": {
+				"code": 404,
+				"name": "Not Found"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "41d9c7e9-d210-4dfc-b883-bd0e2880b4a7",
+			"name": "Delete Type Null",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?typeId=",
+			"time": 6,
+			"responseCode": {
+				"code": 410,
+				"name": "Gone"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "69478b18-83e0-4dd4-a60f-f23615d58f4a",
+			"name": "Update Pokemon Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/update",
+			"time": 101,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				101
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "cb797375-3bdd-4f0e-b1b9-43bea085cfa8",
+			"name": "Update Pokemon Invalid ID",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/update",
+			"time": 10,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				10
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "3b71d33f-564c-46b5-aca3-0685df54279c",
+			"name": "Update Pokemon Invalid categoryId",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/update",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "a72b858c-e60c-411b-8156-ea1ff19e6f52",
+			"name": "Update Pokemon Invalid Pokemon Name",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/update",
+			"time": 31,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				31
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "dec1ff40-8bbf-4d40-bb7e-3b317b3fe9ee",
+			"name": "Update Category Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/update",
+			"time": 13,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				13
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "fa605314-886c-4446-8f51-c6f9227034e4",
+			"name": "Update Category Invalid ID",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/update",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "996140ca-36f1-4333-9a5d-fe628289e901",
+			"name": "Update Category Invalid Name",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/update",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "b031ec7c-aaaf-4797-ab59-74fce2573137",
+			"name": "Update Type Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/update",
+			"time": 15,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				15
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "66128079-f360-42ca-a537-db74bec293b7",
+			"name": "Update Type Invalid ID",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/update",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "3edd4338-9328-40f5-9e18-eddc50e30b53",
+			"name": "Update Type Invalid Name",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/update",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "7eb88c21-3553-4944-95aa-50214e567da2",
+			"name": "Create Pokemon Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "133a2ee2-def4-4f67-a0b6-f051e0c6feda",
+			"name": "Create Pokemon Invalid ID",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "21972001-ccd4-4787-9ebe-10bf1652fb5f",
+			"name": "Create Pokemon Invalid Name",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+			"time": 8,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "a796f571-e8bc-43e8-b773-60e8452a198d",
+			"name": "Create Pokemon Invalid CategoryId",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+			"time": 9,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				9
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "503176a2-fe07-4f3b-b2c7-143b2167b3bc",
+			"name": "Create Pokemon Invalid TypeId",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+			"time": 11,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				11
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "1a48ddfb-381a-49db-9c36-9d3d2dc849e3",
+			"name": "Create Pokemon Invalid TypeName",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "404f9932-116a-4b6c-83f8-3838292c0119",
+			"name": "Create Category Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/create",
+			"time": 8,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				8
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "b3fdfca7-4e67-498d-8bcc-37554ccb40b8",
+			"name": "Create Category Invalid ID",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/create",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "d94a8f06-c224-420b-b348-74b100c2d3b5",
+			"name": "Create Category Invalid Name",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/create",
+			"time": 5,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				5
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "4bb82c5d-b18d-473c-9a75-d3f9e6f13f5a",
+			"name": "Create Type Correct",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/create",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "2c9673a2-9bce-4e58-99a9-2a5034fd45ad",
+			"name": "Create Type Invalid ID",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/create",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "da751081-47cb-4d42-96be-0963b7e0a7df",
+			"name": "Create Type Invalid Name",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/create",
+			"time": 6,
+			"responseCode": {
+				"code": 400,
+				"name": "Bad Request"
+			},
+			"tests": {
+				"Status test": true
+			},
+			"testPassFailCounts": {
+				"Status test": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				6
+			],
+			"allTests": [
+				{
+					"Status test": true
+				}
+			]
+		},
+		{
+			"id": "e18056e1-5599-424d-8765-ba361f7d3382",
+			"name": "TestService",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/test/test",
+			"time": 6,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				6
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "aab6e6f5-17e9-430c-a614-d5c1eadd3fc8",
+			"name": "PokemonList",
+			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/list",
 			"time": 8,
 			"responseCode": {
 				"code": 200,
@@ -277,77 +1138,178 @@
 					"validate response": true
 				}
 			]
-		},
-		{
-			"id": "96fe00d5-13f5-4195-a351-9f0c34379ba1",
-			"name": "Read unknown Type",
-			"url": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?id=abc",
-			"time": 9,
-			"responseCode": {
-				"code": 404,
-				"name": "Not Found"
-			},
-			"tests": {
-				"Status test": true
-			},
-			"testPassFailCounts": {
-				"Status test": {
-					"pass": 1,
-					"fail": 0
-				}
-			},
-			"times": [
-				9
-			],
-			"allTests": [
-				{
-					"Status test": true
-				}
-			]
 		}
 	],
 	"count": 1,
-	"totalTime": 451,
+	"totalTime": 887,
 	"collection": {
 		"requests": [
+			{
+				"id": "2c58fb18-d2b3-403d-af94-0163bfc12aac",
+				"method": "GET"
+			},
+			{
+				"id": "8b8497cf-c200-4d7c-81e7-62cf10ae1f32",
+				"method": "GET"
+			},
+			{
+				"id": "b9fe9e02-f0c4-467d-bf1e-fca36d6bb21d",
+				"method": "GET"
+			},
+			{
+				"id": "f722cb8c-8079-48bb-88ce-05d24073c5a6",
+				"method": "GET"
+			},
+			{
+				"id": "72999e73-29e3-4240-84dc-eabf67b40ed3",
+				"method": "GET"
+			},
+			{
+				"id": "3f03c545-9f55-4872-8c1b-053336d2db26",
+				"method": "GET"
+			},
+			{
+				"id": "9e85df9a-982a-4b48-8ff7-dbf95e790f7d",
+				"method": "GET"
+			},
+			{
+				"id": "39df0641-21d2-427a-bda8-56c2b22c0478",
+				"method": "GET"
+			},
+			{
+				"id": "ceedfd9b-e244-4d73-92c6-7347f35cbd21",
+				"method": "GET"
+			},
+			{
+				"id": "80b0a30d-2b8b-4006-b785-f3dc0b49def5",
+				"method": "DELETE"
+			},
+			{
+				"id": "ff53cf51-5ad4-48cb-955a-a5c3e00a1504",
+				"method": "DELETE"
+			},
+			{
+				"id": "da50e4e8-2194-4596-a5e5-838798e53f5a",
+				"method": "DELETE"
+			},
+			{
+				"id": "97bd2af8-2748-4598-9ec1-fd3cb036b60e",
+				"method": "DELETE"
+			},
+			{
+				"id": "56c7ec3d-a08f-4b7a-9f68-55bc853d95a6",
+				"method": "DELETE"
+			},
+			{
+				"id": "49ac09b4-429f-4cf5-b649-73540f37d1ad",
+				"method": "DELETE"
+			},
+			{
+				"id": "bbd2897d-30e5-4dfc-964d-105b390d0012",
+				"method": "DELETE"
+			},
+			{
+				"id": "21ff603b-e761-4cf9-a31b-7b5de5da61d9",
+				"method": "DELETE"
+			},
+			{
+				"id": "41d9c7e9-d210-4dfc-b883-bd0e2880b4a7",
+				"method": "DELETE"
+			},
+			{
+				"id": "69478b18-83e0-4dd4-a60f-f23615d58f4a",
+				"method": "PUT"
+			},
+			{
+				"id": "cb797375-3bdd-4f0e-b1b9-43bea085cfa8",
+				"method": "PUT"
+			},
+			{
+				"id": "3b71d33f-564c-46b5-aca3-0685df54279c",
+				"method": "PUT"
+			},
+			{
+				"id": "a72b858c-e60c-411b-8156-ea1ff19e6f52",
+				"method": "PUT"
+			},
+			{
+				"id": "dec1ff40-8bbf-4d40-bb7e-3b317b3fe9ee",
+				"method": "PUT"
+			},
+			{
+				"id": "fa605314-886c-4446-8f51-c6f9227034e4",
+				"method": "PUT"
+			},
+			{
+				"id": "996140ca-36f1-4333-9a5d-fe628289e901",
+				"method": "PUT"
+			},
+			{
+				"id": "b031ec7c-aaaf-4797-ab59-74fce2573137",
+				"method": "PUT"
+			},
+			{
+				"id": "66128079-f360-42ca-a537-db74bec293b7",
+				"method": "PUT"
+			},
+			{
+				"id": "3edd4338-9328-40f5-9e18-eddc50e30b53",
+				"method": "PUT"
+			},
+			{
+				"id": "7eb88c21-3553-4944-95aa-50214e567da2",
+				"method": "POST"
+			},
+			{
+				"id": "133a2ee2-def4-4f67-a0b6-f051e0c6feda",
+				"method": "POST"
+			},
+			{
+				"id": "21972001-ccd4-4787-9ebe-10bf1652fb5f",
+				"method": "POST"
+			},
+			{
+				"id": "a796f571-e8bc-43e8-b773-60e8452a198d",
+				"method": "POST"
+			},
+			{
+				"id": "503176a2-fe07-4f3b-b2c7-143b2167b3bc",
+				"method": "POST"
+			},
+			{
+				"id": "1a48ddfb-381a-49db-9c36-9d3d2dc849e3",
+				"method": "POST"
+			},
+			{
+				"id": "404f9932-116a-4b6c-83f8-3838292c0119",
+				"method": "POST"
+			},
+			{
+				"id": "b3fdfca7-4e67-498d-8bcc-37554ccb40b8",
+				"method": "POST"
+			},
+			{
+				"id": "d94a8f06-c224-420b-b348-74b100c2d3b5",
+				"method": "POST"
+			},
+			{
+				"id": "4bb82c5d-b18d-473c-9a75-d3f9e6f13f5a",
+				"method": "POST"
+			},
+			{
+				"id": "2c9673a2-9bce-4e58-99a9-2a5034fd45ad",
+				"method": "POST"
+			},
+			{
+				"id": "da751081-47cb-4d42-96be-0963b7e0a7df",
+				"method": "POST"
+			},
 			{
 				"id": "e18056e1-5599-424d-8765-ba361f7d3382",
 				"method": "GET"
 			},
 			{
 				"id": "aab6e6f5-17e9-430c-a614-d5c1eadd3fc8",
-				"method": "GET"
-			},
-			{
-				"id": "5b46cf7c-aa6c-4674-9260-3709d83757f8",
-				"method": "GET"
-			},
-			{
-				"id": "653cd92b-75e9-4dfe-939d-0f1841edc071",
-				"method": "GET"
-			},
-			{
-				"id": "50a31904-00b8-42fd-9cc8-da856d88485f",
-				"method": "GET"
-			},
-			{
-				"id": "7f74af96-aa55-41f8-ad2b-74af0e1f4042",
-				"method": "GET"
-			},
-			{
-				"id": "02d9e1bf-f07b-4df8-8303-67a0f190164b",
-				"method": "GET"
-			},
-			{
-				"id": "84379c1c-211c-4552-8141-9a536307d59a",
-				"method": "GET"
-			},
-			{
-				"id": "c39c9044-e181-41c4-af82-1bd5fecedfd6",
-				"method": "GET"
-			},
-			{
-				"id": "96fe00d5-13f5-4195-a351-9f0c34379ba1",
 				"method": "GET"
 			}
 		]
