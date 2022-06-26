@@ -5,22 +5,22 @@ package ch.bzz.pokedex.model;
  */
 public class User {
 
-    private String UUID;
+    private String userUUID;
     private String username;
     private String password;
-    private String userRole;
+    private String role;
 
     /**
      * Getters and Setters
      *
      * @return
      */
-    public String getUUID() {
-        return UUID;
+    public String getUserUUID() {
+        return userUUID;
     }
 
-    public void setUUID(String UUID) {
-        this.UUID = UUID;
+    public void setUserUUID(String userUUID) {
+        this.userUUID = userUUID;
     }
 
     public String getUsername() {
@@ -39,12 +39,12 @@ public class User {
         this.password = password;
     }
 
-    public String getUserRole() {
-        return userRole;
+    public String getRole() {
+        return role;
     }
 
-    public void setUserRole(String userRole) {
-        this.userRole = userRole;
+    public void setRole(String role) {
+        this.role = role;
     }
 
 
