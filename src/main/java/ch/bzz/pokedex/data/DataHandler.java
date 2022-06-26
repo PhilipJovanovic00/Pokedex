@@ -9,6 +9,7 @@ package ch.bzz.pokedex.data;
 import ch.bzz.pokedex.model.Category;
 import ch.bzz.pokedex.model.Pokemon;
 import ch.bzz.pokedex.model.Type;
+import ch.bzz.pokedex.model.User;
 import ch.bzz.pokedex.service.Config;
 
 //Import of the Json-Library
@@ -26,11 +27,11 @@ import java.util.List;
 
 public class DataHandler {
 
-    private static DataHandler instance = null;
+    // private static DataHandler instance = null;
     private static List<Pokemon> pokemonList;
     private static List<Category> categoryList;
-
     private static List<Type> typeList;
+    private static List<User> userList;
 
     /**
      * private constructor defeats instantiation
@@ -413,6 +414,42 @@ public class DataHandler {
      */
     private void setCategoryList(List<Category> categoryList) {
         DataHandler.categoryList = categoryList;
+    }
+
+    public String readUserRole(String username, String password){
+        for (User user : getUserList()) {
+            if (user.getUsername().equals(username) &&
+                    user.getPassword().equals(password)) {
+                return user.getUsername();
+            }
+        }
+        return "guest";
+    }
+    private static void readUserJSON() {
+        try {
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(
+                            Config.getProperty("userJSON")
+                    )
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            User[] users = objectMapper.readValue(jsonData, User[].class);
+            for (User user : users) {
+                getUserList().add(user);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    public static List<User> getUserList() {
+        if (DataHandler.userList == null) {
+            DataHandler.setUserList(new ArrayList<>());
+            readUserJSON();
+        }
+        return userList;
+    }
+    public static void setUserList(List<User> userList) {
+        DataHandler.userList = userList;
     }
 
 
