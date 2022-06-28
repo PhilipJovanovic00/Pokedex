@@ -7,6 +7,7 @@ package ch.bzz.pokedex.service;
 import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Pokemon;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 import javax.validation.constraints.*;
 import javax.validation.constraints.Pattern;
@@ -24,13 +25,20 @@ import java.util.List;
 public class PokemonService {
 
     //@GET
+    @PermitAll
     @Path("list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listPokemon() {
+    public Response listPokemon(
+            @CookieParam("userRole") String userRole
+    ) {
+        int httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }
         List<Pokemon> pokemonList = DataHandler.readAllPokemon();
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(pokemonList)
                 .build();
         return response;
@@ -47,10 +55,19 @@ public class PokemonService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readPokemon(
             @NotNull
-            @QueryParam("id") int pokemonId
+            @QueryParam("id") int pokemonId,
+            @CookieParam("userRole") String userRole
+
      ){
         Pokemon pokemon = null;
-        int httpStatus;
+        int httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        } else {
+            if (pokemon == null) {
+                httpStatus = 410;
+            }
+        }
 
         try {
             pokemon = DataHandler.readPokemonById(pokemonId);
@@ -72,14 +89,19 @@ public class PokemonService {
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response createPokemon(
-            @Valid @BeanParam Pokemon pokemon
+            @Valid @BeanParam Pokemon pokemon,
+            @CookieParam("userRole") String userRole
     ) {
         int httpStatus;
-        try {
-            DataHandler.insertPokemon(pokemon);
-            httpStatus = 200;
-        } catch (IllegalArgumentException argEx) {
-            httpStatus = 400;
+        if (userRole == null || userRole.equals("guest") ||userRole.equals("user")){
+            httpStatus = 403;
+        } else {
+            try {
+                DataHandler.insertPokemon(pokemon);
+                httpStatus = 200;
+            } catch (IllegalArgumentException argEx) {
+                httpStatus = 400;
+            }
         }
         Response response = Response
                 .status(httpStatus)
@@ -93,15 +115,20 @@ public class PokemonService {
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updatePokemon(
-            @Valid @BeanParam Pokemon pokemon
+            @Valid @BeanParam Pokemon pokemon,
+            @CookieParam("userRole") String userRole
     ) {
         int httpStatus = 200;
-        if(pokemon != null) {
-            pokemon.setId(pokemon.getId());
-            pokemon.setName(pokemon.getName());
-            DataHandler.updatePokemon();
+        if (userRole == null || userRole.equals("guest") ||userRole.equals("user")){
+            httpStatus = 403;
         } else {
-            httpStatus = 410;
+            if (pokemon != null) {
+                pokemon.setId(pokemon.getId());
+                pokemon.setName(pokemon.getName());
+                DataHandler.updatePokemon();
+            } else {
+                httpStatus = 410;
+            }
         }
         return Response
                 .status(httpStatus)
@@ -114,12 +141,17 @@ public class PokemonService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response deletePokemon(
             @NotNull
-            @QueryParam("id") int pokemonId
+            @QueryParam("id") int pokemonId,
+            @CookieParam("userRole") String userRole
     ) {
         int httpStatus = 200;
-        if(!DataHandler.deletePokemon(pokemonId)) {
-            httpStatus = 410;
-    }
+        if (userRole == null || userRole.equals("guest") || userRole.equals("user")){
+            httpStatus = 403;
+        } else{
+            if (!DataHandler.deletePokemon(pokemonId)) {
+                httpStatus = 410;
+            }
+        }
         return Response
                 .status(httpStatus)
                 .entity("")
