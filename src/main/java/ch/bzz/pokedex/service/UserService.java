@@ -13,7 +13,6 @@ import javax.ws.rs.core.Response;
  */
 @Path("user")
 public class UserService {
-
     /**
      * Logs in the User with the given credentials
      * @param username
@@ -55,7 +54,6 @@ public class UserService {
         return  response;
 
     }
-
     /**
      * Deletes the User with the given cookie
      * @return
@@ -83,6 +81,4 @@ public class UserService {
         return  response;
 
     }
-
-
 }
