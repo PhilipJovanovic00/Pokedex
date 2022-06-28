@@ -8,6 +8,7 @@ import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.model.Category;
 import ch.bzz.pokedex.model.Pokemon;
 
+import javax.annotation.security.PermitAll;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.*;
@@ -22,13 +23,20 @@ import java.util.List;
 public class CategoryService {
 
     //@GET
+    @PermitAll
     @Path("list")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listCategory() {
+    public Response listCategory(
+            @CookieParam("userRole") String userRole
+    ) {
+        int httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        }
         List<Category> categoryList = DataHandler.readAllCategories();
         Response response = Response
-                .status(200)
+                .status(httpStatus)
                 .entity(categoryList)
                 .build();
         return response;
@@ -45,20 +53,24 @@ public class CategoryService {
     @Produces(MediaType.APPLICATION_JSON)
     public Response readCategory(
             @NotNull
-            @QueryParam("categoryId") int categoryId
+            @QueryParam("categoryId") int categoryId,
+            @CookieParam("userRole") String userRole
     ) {
         Category category = null;
-        int httpStatus;
-
-        try {
-            category = DataHandler.readCategoryById(categoryId);
-            if (category == null) {
-                httpStatus = 404;
-            } else {
-                httpStatus = 200;
+        int httpStatus = 200;
+        if (userRole == null || userRole.equals("guest")){
+            httpStatus = 403;
+        } else {
+            try {
+                category = DataHandler.readCategoryById(categoryId);
+                if (category == null) {
+                    httpStatus = 404;
+                } else {
+                    httpStatus = 200;
+                }
+            } catch (IllegalArgumentException argEx) {
+                httpStatus = 400;
             }
-        } catch (IllegalArgumentException argEx) {
-            httpStatus = 400;
         }
         Response response = Response
                 .status(httpStatus)
@@ -73,14 +85,19 @@ public class CategoryService {
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
     public Response createCategory(
-            @Valid @BeanParam Category category
+            @Valid @BeanParam Category category,
+            @CookieParam("userRole") String userRole
     ) {
         int httpStatus;
-        try {
-            DataHandler.insertCategory(category);
-            httpStatus = 200;
-        } catch (IllegalArgumentException argEx) {
-            httpStatus = 400;
+        if (userRole == null || userRole.equals("guest") ||userRole.equals("user")){
+            httpStatus = 403;
+        } else {
+            try {
+                DataHandler.insertCategory(category);
+                httpStatus = 200;
+            } catch (IllegalArgumentException argEx) {
+                httpStatus = 400;
+            }
         }
         Response response = Response
                 .status(httpStatus)
@@ -93,18 +110,23 @@ public class CategoryService {
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
     public Response updateCategory(
-            @Valid @BeanParam Category category
+            @Valid @BeanParam Category category,
+            @CookieParam("userRole") String userRole
     ) {
         int httpStatus = 200;
-        if(category != null) {
-            category.setCategoryId(category.getCategoryId());
-            category.setCategoryName(category.getCategoryName());
-            DataHandler.updateCategory();
+        if (userRole == null || userRole.equals("guest") ||userRole.equals("user")){
+            httpStatus = 403;
         } else {
-            httpStatus = 410;
+            if (category != null) {
+                category.setCategoryId(category.getCategoryId());
+                category.setCategoryName(category.getCategoryName());
+                DataHandler.updateCategory();
+            } else {
+                httpStatus = 410;
+            }
         }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -114,11 +136,16 @@ public class CategoryService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteCategory(
             @NotNull
-            @QueryParam("categoryId") int id
+            @QueryParam("categoryId") int id,
+            @CookieParam("userRole") String userRole
     ) {
         int httpStatus = 200;
-        if(!DataHandler.deleteCategory(id)) {
-            httpStatus = 410;
+        if (userRole == null || userRole.equals("guest") || userRole.equals("user")){
+            httpStatus = 403;
+        } else {
+            if (!DataHandler.deleteCategory(id)) {
+                httpStatus = 410;
+            }
         }
         return Response
                 .status(httpStatus)

@@ -64,20 +64,16 @@ public class PokemonService {
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         } else {
-            if (pokemon == null) {
-                httpStatus = 410;
+            try {
+                pokemon = DataHandler.readPokemonById(pokemonId);
+                if (pokemon == null) {
+                    httpStatus = 404;
+                } else {
+                    httpStatus = 200;
+                }
+            } catch (IllegalArgumentException argEx) {
+                httpStatus = 400;
             }
-        }
-
-        try {
-            pokemon = DataHandler.readPokemonById(pokemonId);
-            if (pokemon == null) {
-                httpStatus = 404;
-            } else {
-                httpStatus = 200;
-            }
-        } catch (IllegalArgumentException argEx) {
-            httpStatus = 400;
         }
         Response response = Response
                 .status(httpStatus)
