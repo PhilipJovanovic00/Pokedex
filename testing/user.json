@@ -1,0 +1,20 @@
+ [
+    {
+        "userUUID" : "831e2149-90bb-4cb4-99bb-597771a35bdc",
+        "username" : "cpp",
+        "role" : "admin",
+        "password" : "1234"
+    },
+    {
+        "userUUID" : "706ad59d-2d0f-4ea3-84b9-870a6ad6ab44",
+        "username" : "testuser",
+        "role" : "user",
+        "password" : "user"
+    },
+    {
+        "userUUID" : "c9a954b2-b529-444c-bf66-59ddfd4958b0",
+        "username" : "guestuser" ,
+        "role" : "guest",
+        "password" : "guest"
+    }
+ ]
