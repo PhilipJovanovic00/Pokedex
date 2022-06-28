@@ -60,7 +60,7 @@ public class PokemonService {
 
      ){
         Pokemon pokemon = null;
-        int httpStatus = 200;
+        int httpStatus;
         if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         } else {

@@ -10,6 +10,68 @@
 			"name": "Milestone2",
 			"item": [
 				{
+					"name": "TestService",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/test/test",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"test",
+								"test"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PokemonList",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"validate response\", function(){",
+									"    pm.response.to.be.json;",
+									"    pm.expect(pm.response.text()).to.include(\"name\");",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
 					"name": "Read Pokemon Null",
 					"event": [
 						{
@@ -59,13 +121,6 @@
 								"exec": [
 									"pm.test(\"Status test\", function(){",
 									"    pm.response.to.have.status(200);",
-									"});",
-									"",
-									"pm.test(\"validate response\", function(){",
-									"    pm.response.to.be.json;",
-									"    const responseJson = pm.response.json();",
-									"    pm.expect(responseJson.name).to.eql(\"Bulbasaur\");",
-									"    pm.expect(responseJson.id).to.eql(1);",
 									"});"
 								],
 								"type": "text/javascript"
@@ -404,7 +459,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=1",
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=4",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -419,7 +474,7 @@
 							"query": [
 								{
 									"key": "id",
-									"value": "1"
+									"value": "4"
 								}
 							]
 						}
@@ -650,7 +705,7 @@
 						"method": "DELETE",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?typeId=1",
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?typeId=5",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -665,7 +720,7 @@
 							"query": [
 								{
 									"key": "typeId",
-									"value": "1"
+									"value": "5"
 								}
 							]
 						}
@@ -2022,766 +2077,1280 @@
 			]
 		},
 		{
-			"name": "TestService",
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/test/test",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"test",
-						"test"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "PokemonList",
-			"event": [
+			"name": "Milestone3",
+			"item": [
 				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"validate response\", function(){",
-							"    pm.response.to.be.json;",
-							"    pm.expect(pm.response.text()).to.include(\"name\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/list",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"pokemon",
-						"list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Read Pokemon",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"validate response\", function(){",
-							"    pm.response.to.be.json;",
-							"    const responseJson = pm.response.json();",
-							"    pm.expect(responseJson.name).to.eql(\"Bulbasaur\");",
-							"    pm.expect(responseJson.id).to.eql(1);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"pokemon",
-						"read"
-					],
-					"query": [
+					"name": "Logoff",
+					"event": [
 						{
-							"key": "id",
-							"value": "1"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Read unknown Pokemon",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(404);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=abc",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"pokemon",
-						"read"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "abc"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "CategoryList",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"validate response\", function(){",
-							"    pm.response.to.be.json;",
-							"    pm.expect(pm.response.text()).to.include(\"categoryName\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/list",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"category",
-						"list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Read Category",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"validate response\", function(){",
-							"    pm.response.to.be.json;",
-							"    const responseJson = pm.response.json();",
-							"    pm.expect(responseJson.categoryName).to.eql(\"seed\");",
-							"    pm.expect(responseJson.categoryId).to.eql(1);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?id=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"category",
-						"read"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Read unknown Category",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(404);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?id=abc",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"category",
-						"read"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "abc"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "TypeList",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"validate response\", function(){",
-							"    pm.response.to.be.json;",
-							"    pm.expect(pm.response.text()).to.include(\"typeName\");",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/list",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"type",
-						"list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Read Type",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(200);",
-							"});",
-							"",
-							"pm.test(\"validate response\", function(){",
-							"    pm.response.to.be.json;",
-							"    const responseJson = pm.response.json();",
-							"    pm.expect(responseJson.typeName).to.eql(\"grass\");",
-							"    pm.expect(responseJson.typeId).to.eql(1);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?id=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"type",
-						"read"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Read unknown Type",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"exec": [
-							"pm.test(\"Status test\", function(){",
-							"    pm.response.to.have.status(404);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?id=abc",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"type",
-						"read"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "abc"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Pokemon",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=4",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"pokemon",
-						"delete"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "4"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Category",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/delete?id=1",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"category",
-						"delete"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "1"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Delete Type",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?id=10",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"type",
-						"delete"
-					],
-					"query": [
-						{
-							"key": "id",
-							"value": "10"
-						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Pokemon",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "6",
-							"type": "text"
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": []
 						},
-						{
-							"key": "name",
-							"value": "Garados",
-							"type": "text"
-						},
-						{
-							"key": "categoryId",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "typeId",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "typeName",
-							"value": "Fire",
-							"type": "text"
-						},
-						{
-							"key": "",
-							"value": "",
-							"type": "text"
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/user/logoff",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"user",
+								"logoff"
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"pokemon",
-						"create"
-					],
-					"query": [
+				{
+					"name": "Read Pokemon logoff",
+					"event": [
 						{
-							"key": "",
-							"value": "",
-							"disabled": true
-						},
-						{
-							"key": "",
-							"value": "",
-							"disabled": true
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Category",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "categoryId",
-							"value": "3",
-							"type": "text"
-						},
-						{
-							"key": "categoryName",
-							"value": "blob",
-							"type": "text"
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"read"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/create",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"category",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Create Type",
-			"request": {
-				"method": "POST",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+				{
+					"name": "Read Category logoff",
+					"event": [
 						{
-							"key": "id",
-							"value": "20",
-							"type": "text"
-						},
-						{
-							"key": "typeName",
-							"value": "Test",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/create",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"type",
-						"create"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Pokemon",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "4",
-							"type": "text"
-						},
-						{
-							"key": "categoryId",
-							"value": "2",
-							"type": "text"
-						},
-						{
-							"key": "name",
-							"value": "Charmander",
-							"type": "text"
-						},
-						{
-							"key": "typeId",
-							"value": "4",
-							"type": "text"
-						},
-						{
-							"key": "typeName",
-							"value": "fire",
-							"type": "text"
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?categoryId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"read"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "1"
+								}
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/update",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"pokemon",
-						"update"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Category",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
+				{
+					"name": "Read Type logoff",
+					"event": [
 						{
-							"key": "id",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "name",
-							"value": "seed",
-							"type": "text"
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
 						}
-					]
-				},
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/update",
-					"protocol": "http",
-					"host": [
-						"localhost"
 					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"category",
-						"update"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "Update Type",
-			"request": {
-				"method": "PUT",
-				"header": [],
-				"body": {
-					"mode": "urlencoded",
-					"urlencoded": [
-						{
-							"key": "id",
-							"value": "1",
-							"type": "text"
-						},
-						{
-							"key": "name",
-							"value": "grass",
-							"type": "text"
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?typeId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"read"
+							],
+							"query": [
+								{
+									"key": "typeId",
+									"value": "1"
+								}
+							]
 						}
-					]
+					},
+					"response": []
 				},
-				"url": {
-					"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/update",
-					"protocol": "http",
-					"host": [
-						"localhost"
+				{
+					"name": "Delete Pokemon logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(410);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
 					],
-					"port": "8080",
-					"path": [
-						"Pokedex-1.0-SNAPSHOT",
-						"resource",
-						"type",
-						"update"
-					]
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(410);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/delete?categoryId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Type logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(410);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?typeId=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "typeId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pokemon logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "MewTwo",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "typeId",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Fire",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "categoryId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "categoryName",
+									"value": "Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Type logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "typeId",
+									"value": "21",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pokemon logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "categoryId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Arctos",
+									"type": "text"
+								},
+								{
+									"key": "typeId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Fire",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "categoryId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categoryName",
+									"value": "Hello",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Type logoff",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "typeId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Hello",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "username",
+									"value": "cpp",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "1234",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/user/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"user",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Pokemon login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/read?id=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"read"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Category login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(404);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/read?categoryId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"read"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Read Type login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/read?typeId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"read"
+							],
+							"query": [
+								{
+									"key": "typeId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Pokemon login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(410);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/delete?id=4",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "4"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Category login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(410);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/delete?categoryId=1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "categoryId",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Type login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(410);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/delete?typeId=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"delete"
+							],
+							"query": [
+								{
+									"key": "typeId",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Pokemon login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "id",
+									"value": "6",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "MewTwo",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "typeId",
+									"value": "3",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Fire",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Category login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "categoryId",
+									"value": "5",
+									"type": "text"
+								},
+								{
+									"key": "categoryName",
+									"value": "Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Type login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "typeId",
+									"value": "21",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Pokemon login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "categoryId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "id",
+									"value": "4",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Arctos",
+									"type": "text"
+								},
+								{
+									"key": "typeId",
+									"value": "2",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Fire",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/pokemon/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"pokemon",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Category login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "categoryId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "categoryName",
+									"value": "Hello",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/category/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"category",
+								"update"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Type login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status test\", function(){",
+									"    pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "typeId",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "typeName",
+									"value": "Hello",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/Pokedex-1.0-SNAPSHOT/resource/type/update",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"Pokedex-1.0-SNAPSHOT",
+								"resource",
+								"type",
+								"update"
+							]
+						}
+					},
+					"response": []
 				}
-			},
-			"response": []
+			]
 		}
 	]
 }
