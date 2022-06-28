@@ -1,5 +1,6 @@
 package ch.bzz.pokedex.service;
 
+import ch.bzz.pokedex.data.DataHandler;
 import ch.bzz.pokedex.data.UserData;
 import ch.bzz.pokedex.model.User;
 
@@ -7,6 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
+@Path("user")
 public class UserService {
 
     @POST
@@ -18,15 +20,16 @@ public class UserService {
     )
     {
         int httpStatus;
+        // || user.getRole()
         User user = UserData.findUser(username, password);
-        if (user == null || user.getRole() == null || user.getRole().equals("guest")) {
+        if (user == null || DataHandler.readUserRole(username, password) == null) {
             httpStatus = 404;
         } else {
             httpStatus = 200;
         }
 
         NewCookie roleCookie = new NewCookie(
-                "userRole",
+                "role",
                 user.getRole(),
                 "/",
                 "",
@@ -45,13 +48,24 @@ public class UserService {
     }
 
     @DELETE
-    @Path("logout")
+    @Path("logoff")
     @Produces
-    public Response logout()
+    public Response login()
     {
+        NewCookie roleCookie = new NewCookie(
+                "userRole",
+                "",
+                "/",
+                "",
+                "Logout-Cookie",
+                1,
+                false
+        );
         Response response = Response
                 .status(200)
                 .entity("")
+                .header("Access-Control-Allow-Origin", "*")
+                .cookie(roleCookie)
                 .build();
         return  response;
 

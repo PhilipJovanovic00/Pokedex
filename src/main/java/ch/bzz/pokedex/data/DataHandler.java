@@ -416,7 +416,7 @@ public class DataHandler {
         DataHandler.categoryList = categoryList;
     }
 
-    public String readUserRole(String username, String password){
+    public static String readUserRole(String username, String password){
         for (User user : getUserList()) {
             if (user.getUsername().equals(username) &&
                     user.getPassword().equals(password)) {
