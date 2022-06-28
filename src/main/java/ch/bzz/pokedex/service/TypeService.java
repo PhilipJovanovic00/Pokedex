@@ -44,9 +44,9 @@ public class TypeService {
     }
 
     /**
-     * Reads the Type with the given id
-     *
+     * reads the Type with the given id.
      * @param typeId
+     * @param userRole
      * @return
      */
     @GET
@@ -82,6 +82,12 @@ public class TypeService {
         return response;
     }
 
+    /**
+     * creates a new Type with the given credentials.
+     * @param type
+     * @param userRole
+     * @return
+     */
     @POST
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
@@ -108,6 +114,12 @@ public class TypeService {
         return response;
     }
 
+    /**
+     * updates the Type with the given credentials.
+     * @param type
+     * @param userRole
+     * @return
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
@@ -134,6 +146,12 @@ public class TypeService {
                 .build();
     }
 
+    /**
+     * deletes the Type with the given id.
+     * @param id
+     * @param userRole
+     * @return
+     */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

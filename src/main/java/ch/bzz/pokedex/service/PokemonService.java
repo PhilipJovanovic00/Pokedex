@@ -81,6 +81,13 @@ public class PokemonService {
                 .build();
         return response;
     }
+
+    /**
+     * Creates a new Pokemon
+     * @param pokemon
+     * @param userRole
+     * @return
+     */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
@@ -89,7 +96,7 @@ public class PokemonService {
             @CookieParam("userRole") String userRole
     ) {
         int httpStatus;
-        if (userRole == null || userRole.equals("guest") ||userRole.equals("user")){
+        if (userRole == null || userRole.equals("guest")){
             httpStatus = 403;
         } else {
             try {
@@ -106,7 +113,12 @@ public class PokemonService {
         return response;
     }
 
-
+    /**
+     * Updates the Pokemon with the given id
+     * @param pokemon
+     * @param userRole
+     * @return
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
@@ -132,6 +144,12 @@ public class PokemonService {
                 .build();
     }
 
+    /**
+     * Deletes the Pokemon with the given id
+     * @param pokemonId
+     * @param userRole
+     * @return
+     */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

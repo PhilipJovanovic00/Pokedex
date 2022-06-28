@@ -81,6 +81,13 @@ public class CategoryService {
 
     }
 
+
+    /**
+     * Creates a new category
+     * @param category
+     * @param userRole
+     * @return
+     */
     @POST
     @Path("create")
     @Produces(MediaType.APPLICATION_JSON)
@@ -106,6 +113,12 @@ public class CategoryService {
         return response;
     }
 
+    /**
+     * Updates the category with the given id
+     * @param category
+     * @param userRole
+     * @return
+     */
     @PUT
     @Path("update")
     @Produces(MediaType.APPLICATION_JSON)
@@ -131,6 +144,12 @@ public class CategoryService {
                 .build();
     }
 
+    /**
+     * Deletes the category with the given id
+     * @param id
+     * @param userRole
+     * @return
+     */
     @DELETE
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)

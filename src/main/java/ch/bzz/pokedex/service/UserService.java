@@ -8,9 +8,18 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.NewCookie;
 import javax.ws.rs.core.Response;
 
+/**
+ * Service for the User Class
+ */
 @Path("user")
 public class UserService {
 
+    /**
+     * Logs in the User with the given credentials
+     * @param username
+     * @param password
+     * @return
+     */
     @POST
     @Path("login")
     @Produces
@@ -47,6 +56,10 @@ public class UserService {
 
     }
 
+    /**
+     * Deletes the User with the given cookie
+     * @return
+     */
     @DELETE
     @Path("logoff")
     @Produces

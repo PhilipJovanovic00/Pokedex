@@ -416,6 +416,12 @@ public class DataHandler {
         DataHandler.categoryList = categoryList;
     }
 
+    /**
+     * reads the user role
+     * @param username
+     * @param password
+     * @return
+     */
     public static String readUserRole(String username, String password){
         for (User user : getUserList()) {
             if (user.getUsername().equals(username) &&
@@ -425,6 +431,10 @@ public class DataHandler {
         }
         return "guest";
     }
+
+    /**
+     * reads the user json file
+     */
     private static void readUserJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
@@ -441,6 +451,11 @@ public class DataHandler {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * gets userList
+     * @return
+     */
     public static List<User> getUserList() {
         if (DataHandler.userList == null) {
             DataHandler.setUserList(new ArrayList<>());
@@ -448,9 +463,12 @@ public class DataHandler {
         }
         return userList;
     }
+
+    /**
+     * sets userList
+     * @param userList
+     */
     public static void setUserList(List<User> userList) {
         DataHandler.userList = userList;
     }
-
-
 }
